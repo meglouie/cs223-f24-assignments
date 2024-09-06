@@ -29,7 +29,7 @@ int main() {
     printf("%d + %d = ?\n", numOne, numTwo);
     answer = numOne + numTwo;
     scanf("%d", &userAnswer);
-    
+
     //only increase score if user answer is correct
     if(userAnswer == answer){
       printf("Correct!\n");
@@ -39,7 +39,6 @@ int main() {
       printf("Incorrect :( \n");
     } 
   } 
-
   printf("You answered %d/%d correctly.\n", correctAnswers, numQuestions);
   return 0;
 } 

@@ -1,7 +1,7 @@
 /***************************************************
  * hello.c
- * Author: Aline Normoyle
- * Date: 1/11/2022
+ * Author: Megan Louie
+ * Date: 9/6/2026
  * Print Hello World
  */
 

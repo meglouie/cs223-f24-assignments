@@ -39,6 +39,7 @@ int main() {
       printf("Incorrect :( \n");
     } 
   } 
+  
   printf("You answered %d/%d correctly.\n", correctAnswers, numQuestions);
   return 0;
 } 

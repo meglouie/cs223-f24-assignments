@@ -68,7 +68,7 @@ void editSongs(struct songList songs[], int numSongs) {
     printf("Enter a new duration (seconds): ");
     scanf("%d", &durationSec);
     songs[songNumber].durationMin = durationMin; // Updates minutes
-    songs[songNumber ].durationSec = durationSec; // Updates seconds
+    songs[songNumber].durationSec = durationSec; // Updates seconds
   } 
   else if (strcmp(attribute, "danceability") == 0) {
     float danceability; //temporarily stores info

@@ -60,10 +60,10 @@ void removeNode(struct node* parentNode){
 *prints the most danceable song out with its other attributes
 */
 void printDanceable(struct node* mostDanceable){
-printf("%-20s %-20s %02d:%02d      %-15.3f %-12.3f %-12.3f %-12.3f\n",
-mostDanceable -> element.song, mostDanceable-> element.artist, mostDanceable -> element.durationMin, 
-mostDanceable -> element.durationSec, mostDanceable -> element.danceability, 
-mostDanceable -> element.energy, mostDanceable -> element.tempo, mostDanceable -> element.valence);
+  printf("%-20s %-20s %02d:%02d      %-15.3f %-12.3f %-12.3f %-12.3f\n",
+  mostDanceable -> element.song, mostDanceable-> element.artist, mostDanceable -> element.durationMin, 
+  mostDanceable -> element.durationSec, mostDanceable -> element.danceability, 
+  mostDanceable -> element.energy, mostDanceable -> element.tempo, mostDanceable -> element.valence);
 }
 
 /*

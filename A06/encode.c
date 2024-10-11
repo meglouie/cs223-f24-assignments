@@ -52,10 +52,11 @@ int main(int argc, char** argv) {
   strcpy(output_filename, argv[1]); 
   char *dot = strrchr(output_filename, '.');
   if (dot != NULL) {
-        strcpy(dot, "-encoded.ppm");  //overwrite from the dot position
-    } else {
-        strcat(output_filename, "-encoded.ppm"); //in case there's no extension
-    }
+    strcpy(dot, "-encoded.ppm");  //overwrite from the dot position
+  } 
+  else {
+    strcat(output_filename, "-encoded.ppm"); //in case there's no extension
+  }
   write_ppm("feep-raw-encoded.ppm", pixels, w, h);
   printf("Writing file feep-raw-encoded.ppm \n");
   free(pixels);

@@ -141,7 +141,7 @@ int main(int argc, char **argv){
   clear(root);
   pthread_mutex_destroy(&mutex);
   for(int i=0; i< totFiles; i++){
-		free(files[i]);
+    free(files[i]);
 	}
   free(files);
   free(threadData);

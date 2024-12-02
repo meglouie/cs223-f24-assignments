@@ -41,6 +41,53 @@ void *tree(void *userData){
   return NULL;
 }
 
+void processInput(struct tree_node* root){
+char input[150];
+  while(1){
+    scanf("%s", input);
+     if (strcmp(input, "list") == 0){
+      printSorted(root);
+    } 
+    else if (strcmp(input, "quit") == 0){
+      break;
+    }
+    else{
+      struct tree_node* file = find(input, root);
+      if(file == NULL){
+        printf("%s not found \n", input);
+      }
+      else{
+        printf(" %s has the following dependencies\n", input);
+        FILE *infile ;
+	      infile = fopen(file->data.name, "r");
+        char lines[150];
+        while(fgets(lines, 150, infile) != NULL){
+          if(strstr(lines, "#include")){
+            char dependcy [150];
+            char *start = strchr(lines, '"');
+             if (start){
+              char *end = strchr(start + 1, '"');
+              int length = end - start - 1;
+              strncpy(dependcy, start + 1, length);
+              dependcy[length] = '\0'; 
+              printf("%s\n", dependcy);
+            } 
+            else{
+              char *start = strchr(lines, '<');
+              char *end = strchr(start + 1, '>');
+              int length = end - start - 1;
+              strncpy(dependcy, start + 1, length);
+              dependcy[length] = '\0'; 
+              printf("%s\n", dependcy);
+            }
+          }
+        }
+        fclose(infile);
+      }
+    }
+  }
+}
+
 int main(int argc, char **argv){
   struct timeval tstart, tend;
   gettimeofday(&tstart, NULL);
@@ -93,51 +140,7 @@ int main(int argc, char **argv){
   gettimeofday(&tend, NULL);
   float timer = tend.tv_sec - tstart.tv_sec + (tend.tv_usec -tstart.tv_usec)/1.e6;
   printf("Elapsed Time is %.6f seconds\n",timer);
-  //read files
-  char input[150];
-  while(1){
-    scanf("%s", input);
-     if (strcmp(input, "list") == 0){
-      printSorted(root);
-    } 
-    else if (strcmp(input, "quit") == 0){
-      break;
-    }
-    else{
-      struct tree_node* file = find(input, root);
-      if(file == NULL){
-        printf("%s not found \n", input);
-      }
-      else{
-        printf(" %s has the following dependencies\n", input);
-        FILE *infile ;
-	      infile = fopen(file->data.name, "r");
-        char lines[150];
-        while(fgets(lines, 150, infile) != NULL){
-          if(strstr(lines, "#include")){
-            char dependcy [150];
-            char *start = strchr(lines, '"');
-             if (start){
-              char *end = strchr(start + 1, '"');
-              int length = end - start - 1;
-              strncpy(dependcy, start + 1, length);
-              dependcy[length] = '\0'; 
-              printf("%s\n", dependcy);
-            } 
-            else{
-              char *start = strchr(lines, '<');
-              char *end = strchr(start + 1, '>');
-              int length = end - start - 1;
-              strncpy(dependcy, start + 1, length);
-              dependcy[length] = '\0'; 
-              printf("%s\n", dependcy);
-            }
-          }
-        }
-        fclose(infile);
-      }
-    }
-  }
+  processInput(root);
   clear(root);
   pthread_mutex_destroy(&mutex);
   for(int i=0; i< totFiles; i++){

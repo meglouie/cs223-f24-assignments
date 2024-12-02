@@ -59,7 +59,7 @@ char input[150];
       else{
         printf(" %s has the following dependencies\n", input);
         FILE *infile ;
-	      infile = fopen(file->data.name, "r");
+        infile = fopen(file->data.name, "r");
         char lines[150];
         while(fgets(lines, 150, infile) != NULL){
           if(strstr(lines, "#include")){

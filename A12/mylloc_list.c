@@ -7,6 +7,7 @@ struct chunk {
   int used;
   struct chunk *next;
 };
+
 struct chunk *flist = NULL;
 
 void *malloc (size_t size) {
